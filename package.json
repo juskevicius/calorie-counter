@@ -1,0 +1,32 @@
+{
+  "name": "calorie-counter",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rspack build",
+    "dev": "rspack dev",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "preview": "rspack preview"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@rspack/cli": "^1.7.6",
+    "@rspack/core": "^1.7.6",
+    "@rspack/plugin-react-refresh": "^1.6.0",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "prettier": "^3.7.3",
+    "react-refresh": "^0.18.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.0"
+  }
+}
