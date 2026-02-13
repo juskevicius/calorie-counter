@@ -1,0 +1,41 @@
+{
+  "name": "CalCounter",
+  "short_name": "CalCounter",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#261b26",
+  "theme_color": "#261b26",
+  "lang": "en",
+  "scope": "/",
+  "id": "/",
+  "icons": [
+    { "src": "icons/pwa-64x64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "icons/pwa-192x192.png", "sizes": "192x192", "type": "image/png" },
+    {
+      "src": "icons/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/vert.png",
+      "type": "image/png",
+      "sizes": "374x667",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/horiz.png",
+      "type": "image/png",
+      "sizes": "667x375",
+      "form_factor": "wide"
+    }
+  ]
+}

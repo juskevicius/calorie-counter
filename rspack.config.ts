@@ -1,8 +1,12 @@
 import { defineConfig } from '@rspack/cli';
 import { rspack, type SwcLoaderOptions } from '@rspack/core';
 import { ReactRefreshRspackPlugin } from '@rspack/plugin-react-refresh';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const isDev = process.env.NODE_ENV === 'development';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Target browsers, see: https://github.com/browserslist/browserslist
 const targets = ['last 2 versions', '> 0.2%', 'not dead', 'Firefox ESR'];
@@ -10,6 +14,9 @@ const targets = ['last 2 versions', '> 0.2%', 'not dead', 'Firefox ESR'];
 export default defineConfig({
   entry: {
     main: './src/main.tsx',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist/web'),
   },
   resolve: {
     extensions: ['...', '.ts', '.tsx', '.jsx'],
@@ -49,6 +56,17 @@ export default defineConfig({
   plugins: [
     new rspack.HtmlRspackPlugin({
       template: './index.html',
+    }),
+    new rspack.CopyRspackPlugin({
+      patterns: [{ from: 'src/assets' }],
+    }),
+    new rspack.CopyRspackPlugin({
+      patterns: [
+        {
+          from: 'src/index.mjs',
+          to: path.resolve(__dirname, 'dist'),
+        },
+      ],
     }),
     isDev ? new ReactRefreshRspackPlugin() : null,
   ],

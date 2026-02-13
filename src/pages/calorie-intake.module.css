@@ -1,0 +1,370 @@
+.container {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.header {
+  background: var(--bg-secondary);
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  margin: 0 0 16px 0;
+  font-size: 2.5rem;
+  /* font-weight: 700; */
+  color: var(--color-text-on-dark);
+  font-family: 'Lavishly Yours', cursive;
+}
+
+.main {
+  flex: 1;
+  padding: 20px 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mealsContainer {
+  margin-bottom: 24px;
+}
+
+.mealCard {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.mealCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--bg-secondary);
+}
+
+.expandToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.expandToggle:hover {
+  opacity: 0.8;
+}
+
+.expandIcon {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.mealSummary {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.mealName {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text-on-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mealCalories {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-danger-dark);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+  background: var(--color-danger-dark);
+  color: white;
+  border-radius: 4px;
+}
+
+.deleteBtn:active {
+  transform: scale(0.95);
+}
+
+.mealContent {
+  padding: 0 16px 16px 16px;
+}
+
+/* Confirmation Dialog */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-on-dark);
+}
+
+.modal p {
+  margin: 0 0 20px 0;
+  color: var(--color-text-on-dark);
+  line-height: 1.5;
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.cancelBtn,
+.confirmBtn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+}
+
+.cancelBtn {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.cancelBtn:hover {
+  background: var(--color-bg-hover);
+}
+
+.confirmBtn {
+  background: var(--danger-color);
+  color: white;
+}
+
+.confirmBtn:hover {
+  background: var(--danger-color-dark);
+}
+
+.confirmBtn:active {
+  transform: scale(0.98);
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--info-bg);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.empty p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.addMealBtn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 24px;
+}
+
+.addMealBtn:hover {
+  background: var(--primary-color-dark);
+}
+
+.addMealBtn:active {
+  transform: scale(0.99);
+}
+
+.summary {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.summary h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-on-dark);
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--bg-primary);
+  border-radius: 6px;
+  border: 1px dashed var(--border-color);
+}
+
+.summaryCard .label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summaryCard .value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px;
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .mealCardHeader {
+    padding: 14px;
+  }
+
+  .mealName {
+    font-size: 0.95rem;
+  }
+
+  .mealCalories {
+    font-size: 0.9rem;
+  }
+
+  .expandToggle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .deleteBtn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .mealContent {
+    padding: 0 12px 12px 12px;
+  }
+
+  .summaryGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summaryCard {
+    padding: 12px;
+  }
+
+  .summaryCard .value {
+    font-size: 1.5rem;
+  }
+
+  .modal {
+    margin: 0 16px;
+  }
+}

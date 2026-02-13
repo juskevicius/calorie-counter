@@ -6,6 +6,7 @@
 # Dist
 node_modules
 dist/
+zip/
 
 # Profile
 .rspack-profile-*/
@@ -14,3 +15,9 @@ dist/
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Terraform
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+.terraform.lock.hcl
