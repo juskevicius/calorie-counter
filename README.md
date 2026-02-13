@@ -1,8 +1,11 @@
-
 # 🥑 Calorie Counter (PWA)
+
 A lightweight, single-page Progressive Web App (PWA) built with React. It allows users to track their daily macros and caloric intake without a backend—all data remains private and is stored locally on your device using IndexedDB.
 
+<img src="./src/assets/screenshots/vert.png" height="300">
+
 ## ✨ Features
+
 - 100% Client-Side: No server, no accounts, complete privacy.
 - Offline Capable: Works without an internet connection (PWA).
 - Macro Tracking: Log meals with Calories, Proteins, Carbs, and Fats.
@@ -10,6 +13,7 @@ A lightweight, single-page Progressive Web App (PWA) built with React. It allows
 - Calendar View: Easily navigate between dates to review history.
 
 ## 🛠 Tech Stack
+
 - Frontend: React
 - Storage: IndexedDB (Local Browser Storage)
 - Deployment: Terraform into AWS lambda
