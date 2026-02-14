@@ -12,6 +12,7 @@ export interface MealEntry {
 export interface DailyMeals {
   date: string; // YYYY-MM-DD format
   meals: Omit<MealEntry, 'date'>[];
+  caloriesBurned: number;
 }
 
 export interface CalculatedMeal extends MealEntry {

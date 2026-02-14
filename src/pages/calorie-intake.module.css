@@ -267,10 +267,19 @@
 }
 
 .summary h2 {
-  margin: 0 0 16px 0;
+  margin: var(--spacing-lg) 0;
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-text-on-dark);
+}
+
+.summary h2:first-child {
+  margin-top: 0;
+}
+
+.spacer {
+  margin-top: var(--spacing-2xl);
+  border-top: 1px solid var(--color-text-secondary);
 }
 
 .summaryGrid {
@@ -282,7 +291,7 @@
 .summaryCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   padding: 16px;
   background: var(--bg-primary);
   border-radius: 6px;
@@ -301,6 +310,19 @@
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--primary-color);
+}
+
+.burnedInput {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  border: none;
+  border-bottom: 1px solid var(--color-primary-dark);
+  width: 100%;
+}
+
+.burnedInput:focus {
+  outline: 1px solid var(--border-color);
 }
 
 .loading {
@@ -360,7 +382,8 @@
     padding: 12px;
   }
 
-  .summaryCard .value {
+  .summaryCard .value,
+  .burnedInput {
     font-size: 1.5rem;
   }
 

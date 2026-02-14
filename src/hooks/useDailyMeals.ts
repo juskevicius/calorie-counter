@@ -1,9 +1,15 @@
 import { useEffect, useState, useCallback } from 'react';
 import type { MealEntry } from '../types/meal';
-import { getMealsByDate, saveMealsByDate, deleteMeal } from '../services/mealDatabase';
+import {
+  getMealsByDate,
+  saveMealsByDate,
+  deleteMeal,
+  saveBurnedCalories,
+} from '../services/mealDatabase';
 
 export const useDailyMeals = (date: string) => {
   const [meals, setMeals] = useState<Omit<MealEntry, 'date'>[]>([]);
+  const [burnedCalories, setBurnedCalories] = useState(0);
   const [loading, setLoading] = useState(true);
 
   // Load meals from database
@@ -11,7 +17,7 @@ export const useDailyMeals = (date: string) => {
     const loadMeals = async () => {
       setLoading(true);
       const data = await getMealsByDate(date);
-      if (data) {
+      if (data?.meals) {
         setMeals(data.meals);
       } else {
         setMeals([]);
@@ -27,7 +33,7 @@ export const useDailyMeals = (date: string) => {
       setMeals(updatedMeals);
       await saveMealsByDate(date, updatedMeals);
     },
-    [date]
+    [date],
   );
 
   const addMeal = useCallback(
@@ -35,7 +41,7 @@ export const useDailyMeals = (date: string) => {
       const newMeals = [...meals, meal];
       await saveMeals(newMeals);
     },
-    [meals, saveMeals]
+    [meals, saveMeals],
   );
 
   const updateMeal = useCallback(
@@ -44,7 +50,7 @@ export const useDailyMeals = (date: string) => {
       newMeals[index] = meal;
       await saveMeals(newMeals);
     },
-    [meals, saveMeals]
+    [meals, saveMeals],
   );
 
   const removeMeal = useCallback(
@@ -53,15 +59,25 @@ export const useDailyMeals = (date: string) => {
       const newMeals = meals.filter((_, i) => i !== index);
       setMeals(newMeals);
     },
-    [meals, date]
+    [meals, date],
+  );
+
+  const updateBurnedCalories = useCallback(
+    async (calories: number) => {
+      await saveBurnedCalories(date, calories);
+      setBurnedCalories(calories);
+    },
+    [date],
   );
 
   return {
     meals,
+    burnedCalories,
     loading,
     addMeal,
     updateMeal,
     removeMeal,
-    saveMeals
+    saveMeals,
+    updateBurnedCalories,
   };
 };

@@ -6,7 +6,7 @@ data "archive_file" "ui_lambda_archive" {
   type          = "zip"
   source_dir      = "../dist"
   output_file_mode = "0666"
-  output_path      = "../zip/index.zip"
+  output_path      = "../dist-zip/index.zip"
 }
 
 resource "aws_iam_role" "iam_for_ui_lambda" {

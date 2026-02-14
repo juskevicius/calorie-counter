@@ -9,8 +9,15 @@ import * as styles from './calorie-intake.module.css';
 export const CalorieIntakePage = () => {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
   const [selectedDate, setSelectedDate] = useState(today);
-  const { meals, loading, addMeal, updateMeal, removeMeal } =
-    useDailyMeals(selectedDate);
+  const {
+    meals,
+    burnedCalories,
+    loading,
+    addMeal,
+    updateMeal,
+    removeMeal,
+    updateBurnedCalories,
+  } = useDailyMeals(selectedDate);
   const [expandedMeals, setExpandedMeals] = useState<Set<number>>(new Set());
   const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
 
@@ -196,6 +203,30 @@ export const CalorieIntakePage = () => {
             <div className={styles.summaryCard}>
               <span className={styles.label}>Total Carbs (g)</span>
               <span className={styles.value}>{totals.carbs.toFixed(1)}</span>
+            </div>
+          </div>
+          <h2>Calories burned</h2>
+          <div className={styles.summaryGrid}>
+            <div className={styles.summaryCard}>
+              <span className={styles.label}>Total</span>
+              <input
+                className={styles.burnedInput}
+                value={burnedCalories}
+                onChange={(event) =>
+                  updateBurnedCalories(Number(event.target.value))
+                }
+                type="number"
+                min="0"
+                step="1"
+              ></input>
+            </div>
+          </div>
+          <div className={styles.spacer}></div>
+          <h2>Balance</h2>
+          <div className={styles.summaryGrid}>
+            <div className={styles.summaryCard}>
+              <span className={styles.label}>Total</span>
+              <span className={styles.value}>{totalCalories - burnedCalories}</span>
             </div>
           </div>
         </div>
