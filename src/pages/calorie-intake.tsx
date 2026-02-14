@@ -5,6 +5,7 @@ import { DatePicker } from '../components/date-picker';
 import { useDailyMeals } from '../hooks/useDailyMeals';
 import type { MealEntry } from '../types/meal';
 import * as styles from './calorie-intake.module.css';
+import { checkForAppUpdates } from '../utils/app-updates';
 
 export const CalorieIntakePage = () => {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
@@ -97,7 +98,10 @@ export const CalorieIntakePage = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1>Daily Calorie Tracker</h1>
+        <h1>
+          {/* Hack: iPhone is a mess when it comes to page (and app) refresh. So adding a secret button */}
+          Daily Calorie <span onClick={checkForAppUpdates}>Tracker</span> 
+        </h1>
         <DatePicker value={selectedDate} onChange={setSelectedDate} />
       </header>
 
@@ -226,7 +230,9 @@ export const CalorieIntakePage = () => {
           <div className={styles.summaryGrid}>
             <div className={styles.summaryCard}>
               <span className={styles.label}>Total</span>
-              <span className={styles.value}>{totalCalories - burnedCalories}</span>
+              <span className={styles.value}>
+                {totalCalories - burnedCalories}
+              </span>
             </div>
           </div>
         </div>
