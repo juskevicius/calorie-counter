@@ -226,7 +226,9 @@ export const CalorieIntakePage = () => {
           <div className={styles.summaryGrid}>
             <div className={styles.summaryCard}>
               <span className={styles.label}>Total</span>
-              <span className={styles.value}>{totalCalories - burnedCalories}</span>
+              <span className={styles.value}>
+                {Math.round(totalCalories - burnedCalories)}
+              </span>
             </div>
           </div>
         </div>

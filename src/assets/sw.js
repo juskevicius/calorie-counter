@@ -1,4 +1,4 @@
-const cacheName = 'v1';
+const cacheName = 'v4';
 
 const appShellFiles = ['/index.html', '/manifest.json'];
 
@@ -7,6 +7,24 @@ self.addEventListener('install', (event) => {
     (async () => {
       const cache = await caches.open(cacheName);
       await cache.addAll(appShellFiles);
+    })(),
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    (async () => {
+      const names = await caches.keys();
+      await Promise.all(
+        names.map((name) => {
+          if (name !== cacheName) {
+            return caches.delete(name);
+          }
+          return undefined;
+        }),
+      );
+      await clients.claim();
     })(),
   );
 });
